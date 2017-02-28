@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_uniassignment" default="compile.module.uniassignment">
+  <dirname property="module.uniassignment.basedir" file="${ant.file.module_uniassignment}"/>
+  
+  <property name="module.jdk.home.uniassignment" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.uniassignment" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.uniassignment" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.uniassignment" value="-encoding UTF-8 -source 1.3 -target 1.3 ${compiler.args}"/>
+  
+  <property name="uniassignment.output.dir" value="undefined"/>
+  <property name="uniassignment.testoutput.dir" value="undefined"/>
+  
+  <path id="uniassignment.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="uniassignment.module.production.classpath"/>
+  
+  <path id="uniassignment.runtime.production.module.classpath"/>
+  
+  <path id="uniassignment.module.classpath"/>
+  
+  <path id="uniassignment.runtime.module.classpath"/>
+  
+  
+  <patternset id="excluded.from.module.uniassignment">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.uniassignment">
+    <patternset refid="excluded.from.module.uniassignment"/>
+  </patternset>
+  
+  
+  <target name="compile.module.uniassignment" depends="compile.module.uniassignment.production,compile.module.uniassignment.tests" description="Compile module UniAssignment"/>
+  
+  <target name="compile.module.uniassignment.production" depends="register.custom.compilers" description="Compile module UniAssignment; production classes"/>
+  
+  <target name="compile.module.uniassignment.tests" depends="register.custom.compilers,compile.module.uniassignment.production" description="compile module UniAssignment; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.uniassignment" description="cleanup module">
+    <delete dir="${uniassignment.output.dir}"/>
+    <delete dir="${uniassignment.testoutput.dir}"/>
+  </target>
+</project>
